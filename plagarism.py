@@ -6,7 +6,6 @@ def dictionary(l,m):
 			d1[i] = d1[i] + 1
 		else:
 			d1[i]=1
-
 	for i in m:
 		if i in d2:
 			d2[i] = d2[i] + 1
@@ -48,6 +47,7 @@ import os
 for file in os.listdir():
 	if file.endswith(".txt"):
 		x = os.path.join(file)
+		# print(type(x))
 		list0.append(x)
 print(list0)
 
@@ -61,13 +61,17 @@ for i in range(len(list0)):
 	sent = list(text.split())
 	sent1.append(sent)
 print((sent1))
-sent2 = []
+sent3 = []
 
 for i in range(len(sent1)):
-	for j in range(i,len(sent1)-1):
-		d1,d2= dictionary(sent1[i],sent1[j+1])
+	sent2=[]
+	for j in range(len(sent1)):
+		d1,d2= dictionary(sent1[i],sent1[j])
 		dot = numerator(d1,d2)
 		k = denominator(d1,d2)
 		cos = answer(dot,k)
 		sent2.append(cos)
-print(sent2)
+	sent3.append(sent2)
+	
+for i in range(len(sent3)):
+	print(sent3[i])
